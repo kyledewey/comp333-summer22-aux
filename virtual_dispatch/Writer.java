@@ -1,13 +1,31 @@
-public class Writer {
-    private boolean userWantsConsole;
-    private boolean userWantsNetwork;
-    private String fileToWriteTo;
-    private String ipAddress;
+public interface Writer {
+    public void writeThing(int valueToWrite) throws IOException;
+}
+
+
+    /*
+    // N number of destinations
+    // N space to save ALL destinations
+    private final boolean userWantsConsole;
+    private final boolean userWantsNetwork;
+    private final String fileToWriteTo;
+    private final String ipAddress;
+
+    // no-args: write to console
+    public Writer() {
+        userWantsConsole = true;
+        userWantsNetwork = false;
+        fileToWriteTo = null;
+        ipAddress = null;
+    }
+
+    public Writer(File file) { ... }
+    public Writer(IpAddress ipAddres) { ... }
     
-    public class Writer(boolean userWantsConsole,
-                        boolean userWantsNetwork,
-                        String fileToWriteTo,
-                        String ipAddress) {
+    public Writer(boolean userWantsConsole,
+                  boolean userWantsNetwork,
+                  String fileToWriteTo,
+                  String ipAddress) {
         this.userWantsConsole = userWantsConsole;
         this.userWantsNetwork = userWantsNetwork;
         this.fileToWriteTo = fileToWriteTo;
@@ -15,6 +33,8 @@ public class Writer {
     }
     
     public void writeThing(int valueToWrite) throws IOException {
+        // N number of destinations
+        // writeThing: O(N) to figure out which destination to write to ALWAYS
         if (userWantsConsole) {
             System.out.println(valueToWrite);
         } else if (userWantsNetwork) {
@@ -26,4 +46,4 @@ public class Writer {
             stream.close();
         }
     }
-}
+    }*/
