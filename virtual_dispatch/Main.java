@@ -49,7 +49,15 @@ public class Main {
     }
     
     public static void main(String[] args) throws IOException {
+        // at compile time: writer is of type Writer
+        // at runtime: writer is specifically one of these:
+        //    -ConsoleWriter
+        //    -NetworkWriter
+        //    -FileWriter
+        // ....and it knows the specific one it is.
         Writer writer = makeWriter(args);
+
+        
         int value = doComputation(writer);
 
         // at runtime, the correct version of writeThing is chosen in O(1)
