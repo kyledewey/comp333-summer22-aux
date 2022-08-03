@@ -12,6 +12,32 @@
 // 12
 
 public class MissingComponents {
+    // `.`, use 1: calling a method on an object (needs parens)
+    // `.`, use 2: accessing an instance variable on an object (no parens)
+    //
+    // MyClass onStack(param1, param2); // onStack is an instance of MyClass, on stack
+    // MyClass* onHeap = new MyClass(param1, param2);
+    //
+    // a->b equivalent to (*a).b
+    //
+    // alpha->beta(1)->gamma(2)->delta(3)->epsilon;
+    //
+    // target.instanceVariableName
+    // target.methodName(...params...)
+    //
+    // assuming epsilon is an int:
+    // alpha: Type1
+    // alpha.beta(1): Type2
+    //   ok as long as Type2 has a gamma method that takes one integer
+    // int temp = (((alpha.beta(1)).gamma(2)).delta(3)).epsilon;
+    // return (((alpha.beta(1)).gamma(2)).delta(3)).epsilon;
+    //
+    // type parameterName
+    // int[] input
+    // IntToVoidOp op
+    //
+    // at compile time: op is of type IntToVoidOp
+    // at runtime: op is of type PrintValue
     public static void forEach(int[] input, IntToVoidOp op) {
         for (int index = 0; index < input.length; index++) {
             int element = input[index];
@@ -41,6 +67,9 @@ public class MissingComponents {
         //   -Needs an apply method, takes an int, returns int
         // needed: IntToVoidOp class / interface
         //   -Needs an apply method, takes an int, returns void
+
+        IntToIntOp addAmount = new IntToIntOp(); // not legal; won't compile
+        
         IntToIntOp addAmount = new AddAmount(3);
         IntToVoidOp printValue = new PrintValue();
 

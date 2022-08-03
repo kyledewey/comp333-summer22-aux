@@ -44,21 +44,23 @@ function product(arr) {
     return retval;
 }
 
-function reduce(arr, initialValue, operation) {
+// operation: function, first parameter is the running `accumulator`,
+// second parameter is the current value in the array
+function reduce(array, initialValue, operation) {
     let accumulator = initialValue;
-    for (let index = 0; index < arr.length; index++) {
-        let element = arr[index];
+    for (let index = 0; index < array.length; index++) {
+        let element = array[index];
         accumulator = operation(accumulator, element);
     }
     return accumulator;
 }
 
-function sumRefactored(arr) {
-    return reduce(arr, 0, (a, e) => a + e);
+function sumRefactored(array) {
+    return reduce(array, 0, (accumulator, element) => accumulator + element);
 }
 
-function productRefactored(arr) {
-    return reduce(arr, 1, (a, e) => a * e);
+function productRefactored(array) {
+    return reduce(array, 1, (accumulator, element) => accumulator * element);
 }
 
 // foldLeft:  takes an initial value, moves left to right through the array
