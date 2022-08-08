@@ -1,10 +1,13 @@
-let rectanglePrototype = { 'getArea': function() {
+Rectangle.prototype.getArea = function() {
     return this.width * this.height;
-}};
+}
+Rectangle.prototype.getWidth = function() {
+    return this.width;
+}
+// Rectangle.prototype = {} // automatic
 function Rectangle(inputWidth, inputHeight) {
     this.width = inputWidth;
     this.height = inputHeight;
-    this.__proto__ = rectanglePrototype;
+    // this.__proto__ = Rectangle.prototype; // automatic
 }
-// let r1 = new Rectangle(3, 4)
-// let r2 = new Rectangle(5, 6)
+
